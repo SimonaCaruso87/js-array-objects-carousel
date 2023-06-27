@@ -60,11 +60,12 @@ body{
 }
 
 .my-text{
-    color: blueviolet;
+    color: #7843E6;
 }
 .slider {
     width: 50vw;
     height: 50vh;
+
     position: relative;
 }
 

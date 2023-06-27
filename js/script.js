@@ -49,9 +49,11 @@ let item_content = '';
 let item_thumb = '';
 
 for (let i = 0; i < imagesArray.length; i++) {
+    const slideObj = imagesArray[i]
     //CONCATENIAMO POSSO ANCHE USARE ITEM_CONTENT.INNERHTML= ITEM_CONTENT.INNERHTML + `<div class="item"><img src="./img/${ images_array[i] }"></div>`; 
-    item_content += `<div class="item"><img src="./img/${ imagesArray[i] }"></div>`; 
-    item_thumb += `<div class="thumb"><img src="./img/${ imagesArray[i] }"></div>`; 
+    item_content += `<div class="item"><img src="./img/${ slideObj.image }"></div>`; 
+    item_thumb += `<div class="thumb"><img src="./img/${slideObj.image
+    }"></div>`; 
 };
 
 const items_slider = document.querySelector('.item-slider').innerHTML = item_content;
