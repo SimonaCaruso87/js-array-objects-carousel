@@ -1,0 +1,154 @@
+/*************************************************
+    GENERAL STYLES
+*************************************************/
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.my-background{
+
+    color: #9bdd31
+}
+
+/************************************************
+    CUSTOM PROPERTIES
+************************************************/
+
+ :root{
+ 
+    /* COLOR BACKGROUND*/
+   
+       --first-color:#006CFA;
+       --second-color:#00E165;
+   
+    /* COLOR TEXT */ 
+   
+       --first-text:#FFFFFF;
+       --second-text:white;
+       --third-text:#6A6A6A;
+
+   /*   HEIGHT   */
+       
+    
+
+    }
+   
+/************************************************
+    UTILITIES
+************************************************/
+ 
+/* 
+    LAYOUT 
+*/
+
+ 
+/************************************************
+    SITE SECTIONS
+************************************************/
+
+/*
+   HEADER
+*/
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid blueviolet;
+    max-width: fit-content;
+    padding-top: 10px;
+    padding-bottom: 25px;
+}
+
+.my-text{
+    color: blueviolet;
+}
+.slider {
+    width: 50vw;
+    height: 50vh;
+    position: relative;
+}
+
+.item-slider, .item-thumbnails{
+    height: 100%;
+}
+
+.item {
+    height: 100%;
+    display: none;
+}
+
+.item img, .thumb img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover; 
+}
+
+.arrow {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(128, 128, 128, 0.6);
+    border-radius: 50%;
+    font-weight: 800;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.next {
+    top: 5px;
+}
+
+.prev {
+    bottom: 5px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgb(128, 128, 128, 0.9);
+}
+
+.item.active {
+    display: block;
+}
+
+.circles-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px;
+}
+
+.circle {
+    display: inline-block;
+    background-color: rgb(128, 128, 128, 0.4);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+                                                                                                                                                        
+
+.circle.active, .circle:hover {
+    background-color: rgb(128, 128, 128, 0.9);
+}
+
+.thumbnails {
+    width: 20vw;
+    height: 50vh;
+}
+
+.thumb {
+    height: 20%;
+}
+
+.thumb img {
+    background-color: black;
+    opacity: 0.5;
+}
+
+.thumb.active img {
+    opacity: 1;
+}
