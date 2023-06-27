@@ -17,6 +17,7 @@ Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi)
 BONUS 3:
 Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.*/
 
+//Creare un'array di oggetti
 const imagesArray = [
     {
         image: '05.png',
@@ -45,70 +46,145 @@ const imagesArray = [
     },
 ];
 
-let item_content = '';
-let item_thumb = '';
+// DEFINZIONE FUNZIONE PER AUTOPLAY
+
+function autoplaySlide(){
+
+    if(itemActive < items.length - 1){
+
+        // Togliere la classe active all'imagine e del pallino attuale
+        items[itemActive].classList.remove("active");
+        circles[itemActive].classList.remove("active");
+        thumbnails[itemActive].classList.remove("active")
+
+        // Incremento
+        itemActive++;
+
+        // Aggiungere la classe active all'elemento successivo
+
+        items[itemActive].classList.add("active")
+        circles[itemActive].classList.add("active")
+        thumbnails[itemActive].classList.add("active")
+
+    }else{
+        items[itemActive].classList.remove("active");
+        circles[itemActive].classList.remove("active");
+        thumbnails[itemActive].classList.remove("active")
+
+        itemActive = 0;
+
+        items[itemActive].classList.add("active")
+        circles[itemActive].classList.add("active") 
+        thumbnails[itemActive].classList.add("active")
+    }
+
+}
+
+
+
+//Creare dinamicamente i div con le immagini del carosello
+
+let itemContent = '';
+let itemsThumbnails= ' ';
 
 for (let i = 0; i < imagesArray.length; i++) {
-    const slideObj = imagesArray[i]
-    //CONCATENIAMO POSSO ANCHE USARE ITEM_CONTENT.INNERHTML= ITEM_CONTENT.INNERHTML + `<div class="item"><img src="./img/${ images_array[i] }"></div>`; 
-    item_content += `<div class="item"><img src="./img/${ slideObj.image }"></div>`; 
-    item_thumb += `<div class="thumb"><img src="./img/${slideObj.image
+    itemContent +=
+    `<div class="item">
+        <img src="./img/${imagesArray[i].image }">
+        <div class="item-description">
+            <h2>${imagesArray[i].title}</h2>
+            <p>${imagesArray[i].description}</p>
+         </div>
+    </div>`; 
+
+    itemsThumbnails += 
+    `<div class="thumb">
+        <img src="./img/${imagesArray[i].image
     }"></div>`; 
 };
 
-const items_slider = document.querySelector('.item-slider').innerHTML = item_content;
-const items_thumbnails = document.querySelector('.item-thumbnails').innerHTML = item_thumb;
+
+//inserire le immagini nel div contenitore
+
+const itemsSlider = document.querySelector('.item-slider').innerHTML += itemContent;
+
+const thumbnailsPrev = document.querySelector(".thumbnails")
+thumbnailsPrev.innerHTML += itemsThumbnails
+
+
+//Prendere la prima immagine dell'array e renderla attiva
 
 const items = document.getElementsByClassName('item');
+let itemActive = 0;
+items[itemActive].classList.add('active');
+
+
+//Rendere attivo anche il primo cerchio di navigazione
+
 const circles = document.getElementsByClassName('circle');
-const thumb = document.getElementsByClassName('thumb');
-console.log(thumb);
+console.log(circles);
+circles[itemActive].classList.add('active');
 
-let item_active = 0;
 
-items[item_active].classList.add('active');
-circles[item_active].classList.add('active');
-thumb[item_active].classList.add('active');
+const thumbnails = document.getElementsByClassName('thumb');
+console.log(thumbnails);
+thumbnails[itemActive].classList.add('active');
+
 
 let next = document.querySelector('.next');
 let prev = document.querySelector('.prev');
 
 next.addEventListener ('click', function() {
 
-    items[item_active].classList.remove('active');
-    circles[item_active].classList.remove('active');
-    thumb[item_active].classList.remove('active');
+    if ( itemActive > 0 ) {
 
-    if ( item_active === imagesArray.length-1 ) {
-        item_active = 0;
+        // Togliere la classe active all'immagine e del pallino attuale
+        items[itemActive].classList.remove('active');
+        circles[itemActive].classList.remove('active');
+        thumbnails[itemActive].classList.remove('active');
+    
+        //Decremento
+        itemActive--;
+
+        // Aggiungere la classe active all'elemento precedente
+        items[itemActive].classList.add('active');
+        circles[itemActive].classList.add('active');
+        thumb[itemActive].classList.add('active');
     }
     else {
-        item_active++;
-    };
+        items[itemActive].classList.remove("active");
+        circles[itemActive].classList.remove("active");
+        thumbnails[itemActive].classList.remove("active")
 
-    items[item_active].classList.add('active');
-    circles[item_active].classList.add('active');
-    thumb[item_active].classList.add('active');
+        itemActive = items.length - 1;
+
+        items[itemActive].classList.add("active")
+        circles[itemActive].classList.add("active") 
+        thumbnails[itemActive].classList.add("active")
+    };
+    
+    
 });
 
 prev.addEventListener ('click', function() {
 
-    items[item_active].classList.remove('active');
-    circles[item_active].classList.remove('active');
-    thumb[item_active].classList.remove('active');
+    items[itemActive].classList.remove('active');
+    circles[itemActive].classList.remove('active');
+    thumb[itemActive].classList.remove('active');
 
-    if ( item_active === 0 ) {
-        item_active = imagesArray.length - 1;
+    if ( itemActive === 0 ) {
+        itemActive = imagesArray.length - 1;
     }
     else {
-        item_active--;
+        itemActive--;
     };
 
-    items[item_active].classList.add('active');
-    circles[item_active].classList.add('active');
-    thumb[item_active].classList.add('active');
+    items[itemActive].classList.add('active');
+    circles[itemActive].classList.add('active');
+    thumb[itemActive].classList.add('active');
 });
 
+setInterval(autoplaySlide , 3000);
 
 
 

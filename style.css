@@ -50,13 +50,17 @@ body{
    HEADER
 */
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .container {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: fit-content;
-    padding-top: 10px;
-    padding-bottom: 25px;
 }
 
 .my-text{
@@ -65,7 +69,6 @@ body{
 .slider {
     width: 50vw;
     height: 50vh;
-
     position: relative;
 }
 
@@ -74,13 +77,20 @@ body{
 }
 
 .item {
-    height: 100%;
     display: none;
+    position: relative;
 }
 
-.item img, .thumb img {
+.item-description{
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: #ffffff;
+}
+
+
+.item img{
    width: 100%;
-   height: 100%;
    object-fit: cover; 
 }
 
@@ -117,8 +127,7 @@ body{
 .circles-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin: 10px;
+    
 }
 
 .circle {
@@ -128,6 +137,8 @@ body{
     height: 10px;
     border-radius: 50%;
     cursor: pointer;
+    margin: 10px;
+
 }
                                                                                                                                                         
 
@@ -135,20 +146,38 @@ body{
     background-color: rgb(128, 128, 128, 0.9);
 }
 
+.hidden{
+    display:none;
+}
+
+/* BONUS 2 */
+
 .thumbnails {
+    /* float: right;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transform: translate(100%, -108.53%);
+    background-color: #000000; */
     width: 20vw;
     height: 50vh;
 }
 
 .thumb {
-    height: 20%;
+    width: 100%;
+    height: calc(100% / 5);
+    opacity: 0.1;
 }
+
 
 .thumb img {
     background-color: black;
     opacity: 0.5;
+    width: 100%;
+    object-fit: cover;
+
 }
 
-.thumb.active img {
+.thumb.active{
     opacity: 1;
 }
