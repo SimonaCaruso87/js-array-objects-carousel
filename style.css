@@ -54,7 +54,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 5px solid blueviolet;
     max-width: fit-content;
     padding-top: 10px;
     padding-bottom: 25px;
